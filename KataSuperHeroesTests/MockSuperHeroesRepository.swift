@@ -11,15 +11,19 @@ import Foundation
 
 class MockSuperHeroesRepository: SuperHeroesRepository {
 
-    var superHeroes = [SuperHero]()
+    var superHeroes: [SuperHero]? = nil
 
     override func getAll(_ completion: @escaping ([SuperHero]) -> ()) {
-        completion(superHeroes)
+        if let superHeroes = self.superHeroes{
+            completion(superHeroes)
+        }
     }
 
     override func getSuperHero(withName name: String, completion: @escaping (SuperHero?) -> ()) {
-        let superHeroByName = superHeroes.filter { $0.name == name }.first
-        completion(superHeroByName)
+        if let superHeroes = self.superHeroes{
+            let superHeroByName = superHeroes.filter { $0.name == name }.first
+            completion(superHeroByName)
+        }
     }
 
 }

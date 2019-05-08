@@ -21,6 +21,7 @@ open class LoadingView: UIView {
         view.frame = bounds
         view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         addSubview(view)
+        self.accessibilityLabel = "Tuned Loading"
     }
 
     private func loadViewFromNib() -> UIView {
